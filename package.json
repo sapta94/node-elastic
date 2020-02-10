@@ -4,7 +4,8 @@
   "description": "A platform for visualisation and comparison of different movies/shows made with node and elasticsearch",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "@elastic/elasticsearch": "^7.5.1",
     "body-parser": "^1.17.2",
     "cors": "^2.8.5",
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "nodemon": "^2.0.2"
   }
 }
