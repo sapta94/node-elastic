@@ -20,7 +20,8 @@ module.exports = (settings) => {
                 body: { 
                     "query":{
                         "match":{ 
-                            "title":showName
+                            "title":showName,
+                            "type":"TV"
                         }
                     }
                 }
