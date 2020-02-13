@@ -16,15 +16,27 @@ module.exports = (settings) => {
         try{
             const data=await client.search({
                 index: 'all-shows',
-                // type: '_doc', // uncomment this line if you are using Elasticsearch ≤ 6
-                body: { 
-                    "query":{
-                        "match":{ 
-                            "title":showName,
-                            "type":"TV"
-                        }
+                body: {
+                    "query": {
+                      "bool": {
+                        "must": [
+                          {
+                            "match": {
+                              "title": {
+                                  "query":showName,
+                                  "fuzziness": 2
+                              }
+                            }
+                          },
+                          {
+                            "term": {
+                              "type": "tv"
+                            }
+                          }
+                        ]
+                      }
                     }
-                }
+                  }
             })
             return res.status(200).json({
                 message:'success',

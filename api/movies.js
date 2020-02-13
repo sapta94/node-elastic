@@ -22,13 +22,16 @@ module.exports = (settings) => {
                       "bool": {
                         "must": [
                           {
-                            "term": {
-                              "title": showName
+                            "match": {
+                              "title": {
+                                  "query":showName,
+                                  "fuzziness": 2
+                              }
                             }
                           },
                           {
                             "term": {
-                              "duration": "min"
+                              "type": "movie"
                             }
                           }
                         ]
