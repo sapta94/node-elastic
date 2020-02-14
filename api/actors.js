@@ -6,6 +6,12 @@ module.exports = (settings) => {
 
     app.get('/getDistinctActor',async(req,res)=>{
       let actorName = req.query.actorName||null;
+
+      if(actorName.length<3){
+        return res.json({
+          data:[]
+        })
+      }
       try{
         const data=await client.search({
           index: 'all-shows',
@@ -67,8 +73,7 @@ module.exports = (settings) => {
                           {
                             "match": {
                               "cast": {
-                                  "query":actorName,
-                                  "fuzziness": 0
+                                  "query":actorName
                               }
                             }
                           }
