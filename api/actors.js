@@ -6,11 +6,20 @@ module.exports = (settings) => {
 
     app.get('/getDistinctActor',async(req,res)=>{
       let actorName = req.query.actorName||null;
+      let type= req.qery.type||null;
 
       if(actorName.length<3){
         return res.json({
           data:[]
         })
+      }
+      var typeCheck={}
+      if(type){
+        typeCheck = {
+          "term": {
+            "type": type
+          }
+        }
       }
       try{
         const data=await client.search({
@@ -27,7 +36,8 @@ module.exports = (settings) => {
                             "fuzziness": 3
                         }
                       }
-                    }
+                    },
+                    typeCheck
                   ]
                 }
               }
@@ -54,11 +64,20 @@ module.exports = (settings) => {
 
     app.get('/getDistinctDirector',async(req,res)=>{
       let directorName = req.query.directorName||null;
+      let type= req.query.type||null;
 
       if(directorName.length<3){
         return res.json({
           data:[]
         })
+      }
+      var typeCheck={}
+      if(type){
+        typeCheck = {
+          "term": {
+            "type": type
+          }
+        }
       }
       try{
         const data=await client.search({
@@ -75,7 +94,8 @@ module.exports = (settings) => {
                             "fuzziness": 3
                         }
                       }
-                    }
+                    },
+                    typeCheck
                   ]
                 }
               }
