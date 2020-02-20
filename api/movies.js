@@ -5,8 +5,9 @@ module.exports = (settings) => {
 
     app.get('/getMovies',async (req,res)=>{
         let showName = req.query.movies||null;
+        let type = req.query.type||null
 
-        if(!showName){
+        if(!showName || !type){
             return res.status(200).json({
                 message:'success',
                 data:[]
@@ -23,7 +24,7 @@ module.exports = (settings) => {
                         "must": [
                           {
                             "match": {
-                              "title": {
+                              type: {
                                   "query":showName,
                                   "fuzziness": 2
                               }

@@ -89,7 +89,7 @@ module.exports = (settings) => {
                   "must": [
                     {
                       "match": {
-                        "cast": {
+                        "director": {
                             "query":directorName,
                             "fuzziness": 3
                         }
