@@ -104,7 +104,7 @@ module.exports = (settings) => {
         let tempData = data.body.hits.hits
         let finalArr=[]
         tempData.forEach(element => {
-          let casts = (element._source.cast).split(',')
+          let casts = (element._source.director).split(',')
           finalArr.push(...casts)
         });
         return res.status(200).json({
