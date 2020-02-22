@@ -19,6 +19,7 @@ var settings = {
 require('./api/shows')(settings)
 require('./api/movies')(settings)
 require('./api/actors')(settings)
+require('./api/general')(settings)
 
 var ports = process.env.PORT || 5000;
 
