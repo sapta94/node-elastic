@@ -10,10 +10,10 @@ module.exports=(settings)=>{
                 body: {
                     
                         "aggs": {
-                          "distinct_colors": {
+                          "distinct_country": {
                             "terms": {
                               "field": "country",
-                              "size": 1000
+                              "size": 25
                             }
                           }
                         }
@@ -21,7 +21,7 @@ module.exports=(settings)=>{
             })
             return res.status(200).json({
                 message:'success',
-                data:data.body.hits
+                data:data.body.aggregations
             })
         }catch(err){
             console.log(err)
