@@ -90,8 +90,9 @@ module.exports=(settings)=>{
                             {
                                 "range": {"release_year": temp}
                             } 
-                        } 
-                    } 
+                        }
+                    },
+                    "size":100  
                 }     
             })
             return res.json({
